@@ -13,4 +13,6 @@ function handle = drawBox(a, color),
   drawLine(p3, p4, color)
   drawLine(p4, p1, color)
 
+  hold on
+
 endfunction
