@@ -1,5 +1,5 @@
-function T = getTranslate(Xdelta, Ydelta)
+function T = getTranslation(Xdelta, Ydelta)
 
-  [1, 0, Xdelta;0, 1, Ydelta;0, 0, 1]
+T = [1, 0, Xdelta;0, 1, Ydelta;0, 0, 1];
 
 endfunction

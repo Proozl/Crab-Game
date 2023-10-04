@@ -16,9 +16,12 @@ function captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
   % TODO : Shift the captain from (0 , 0) to (xCapt , yCapt)
   % Extract the captain points from the captain matrix capt.
 
+  % rotate captain
+  R = getRotation(thetaCapt);
+  captRotated = R*capt;
   % shift Captain to new location
-  T = getTranslation(xCapt,yCapt); % T is given the vector that moves the points
-  capt = T*capt; % is the action of moving each point of Captain
+  T = getTranslation(xCapt, yCapt); % T is given the vector that moves the points
+  capt = T*captRotated; % is the action of moving each point of Captain
 
   pt1=capt( : , 1);
   pt2=capt( : , 2);
