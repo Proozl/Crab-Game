@@ -10,7 +10,13 @@ Crabs Functions
   Functions Called: None
   Used by: drawCaptain 
 
-  # Crabs
+# getRotation 
+  Inputs: theta
+  Outputs: Rotation matrix
+  Functions called: none
+  Used by: drawCaptain
+
+# Crabs
   Inputs: BGImage.png
   OutPuts: mapHeight, mapWidth
   Functions Called: drawCapt, drawMap
