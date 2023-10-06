@@ -19,7 +19,7 @@ Crabs Functions
 # Crabs
   Inputs: BGImage.png
   OutPuts: mapHeight, mapWidth
-  Functions Called: drawCapt, drawMap
+  Functions Called: drawCapt, drawMap, length, moveCapt, kbhit
   Used by: none
 
 
@@ -52,3 +52,15 @@ Used by: drawCapt, drawBox
   OutPuts: handle
   Functions Called: drawLine()
   Used by: none 
+
+# moveCapt
+Inputs: x, y, theta, width, height
+OutPuts: xCapt, yCapt thetaCapt
+Functions Called: isOnMap
+Used by: crabs
+
+# isOnMap
+Inputs: x, y, width, height
+Outputs: mapCheck
+Functions: none
+Used by: moveCapt
