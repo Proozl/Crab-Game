@@ -34,7 +34,8 @@ function crabs ()
 
  endfor
   %move captain
-  [xCapt,yCapt,thetaCapt] = moveCapt(xCapt, yCapt, thetaCapt, cmd)
+
+  [xCapt,yCapt,thetaCapt] = moveCapt(cmd, xCapt, yCapt, thetaCapt, mapWidth, mapHeight)
 
   %draw new captain
     captGraphics = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt)
