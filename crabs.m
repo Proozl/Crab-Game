@@ -12,12 +12,19 @@ function crabs ()
   sizeCapt = 50;
   % Draw the captain and initialize graphics handles
 
+  %Initialize crab location, heading and size
+    xCrab = 1000;
+    yCrab = 1200;
+    thetaCrab = -pi/2;
+    sizeCrab = 50;
+
   %*********************************************************
   % Put your call to drawCapt() here ..... You must give drawCapt its
   % input and output arguments.
   %drawCapt(xCapt, yCapt, thetaCapt, sizeCapt)
   %*******************************************************
   captGraphics = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt)
+  %crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab)
 
   %initial command
   cmd = "null";
