@@ -24,7 +24,7 @@ function crabs ()
   %drawCapt(xCapt, yCapt, thetaCapt, sizeCapt)
   %*******************************************************
   captGraphics = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt)
-  %crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab)
+  crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab)
 
   %initial command
   cmd = "null";
@@ -45,9 +45,23 @@ function crabs ()
   [xCapt,yCapt,thetaCapt] = moveCapt(cmd, xCapt, yCapt, thetaCapt, mapWidth, mapHeight)
 
   %draw new captain
-    captGraphics = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt)
+    captGraphics = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt);
+
+elseif(cmd == "i" || cmd == "j" || cmd == "k" || cmd == "l" || cmd == ",")%respond crab move
+    %erase old crab
+    for i=1:length(crabGraphics)
+      set(crabGraphics(i),'Visible','off');
+    endfor
+
+    %move crab
+    [xCrab, yCrab, thetaCrab] = moveCrab(cmd, xCrab, yCrab, thetaCrab, sizeCrab, mapHeight, mapWidth)
+
+   crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab)
 
    endif
   endwhile
+
   close all
+  clear
+
 endfunction
