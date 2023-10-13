@@ -1,27 +1,26 @@
-## Copyright (C) 2023 Alan Parra
-##
-## This program is free software: you can redistribute it and/or modify
-## it under the terms of the GNU General Public License as published by
-## the Free Software Foundation, either version 3 of the License, or
-## (at your option) any later version.
-##
-## This program is distributed in the hope that it will be useful,
-## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-## GNU General Public License for more details.
-##
-## You should have received a copy of the GNU General Public License
-## along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-## -*- texinfo -*-
-## @deftypefn {} {@var{retval} =} getCrab (@var{input1}, @var{input2})
-##
-## @seealso{}
-## @end deftypefn
 
-## Author: Alan Parra <alanp@Alans-MacBook-Air.local>
-## Created: 2023-10-09
+function crab = getCrab (size )
+% This function stores and returns the crab at the origin with zero heading in the form of a matirx. 
+% Each colunm represents one point on the crab.
 
-function retval = getCrab (input1, input2)
+%body
+crabPt1 = [   size/2;  size; 1];
+crabPt2 = [  -size/2;  size; 1];
+crabPt3 = [  -size/2; -size; 1];
+crabPt4 = [   size/2; -size; 1];
 
+%claws
+crabPt5 = [  2*size;  size/4; 1];
+crabPt6 = [  2*size;  -size/4; 1];
+
+%legs
+crabPt7 =  [0; 1.5*size; 1];
+crabPt8 =  [-size; 1.5*size; 1];
+crabPt9 =  [0; -1.5*size; 1];
+crabPt10 = [-size; -1.5*size; 1];
+
+
+ crab = [ crabPt1, crabPt2, crabPt3, crabPt4, crabPt5, crabPt6, crabPt7, crabPt8, crabPt9, crabPt10]; 
+ 
 endfunction
