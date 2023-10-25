@@ -18,22 +18,34 @@ function crabs ()
     thetaCrab = -pi/2;
     sizeCrab = 50;
 
+  %Initialize jelly fish
+    xJelly = rand*mapWidth;
+    yJelly = 0;
+    thetaJelly = -pi/2;
+    sizeJelly = 25;
+
   %*********************************************************
   % Put your call to drawCapt() here ..... You must give drawCapt its
   % input and output arguments.
   %drawCapt(xCapt, yCapt, thetaCapt, sizeCapt)
   %*******************************************************
-  captGraphics = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt)
-  crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab)
+  [captGraphics, xNet, yNet] = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt);
+  crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab);
+  jellyGraphics = drawJelly(xJelly, yJelly, thetaJelly, sizeJelly);
 
   %initial command
   cmd = "null";
+  for=1
+  delete(crabGraphics(i))
+  endfor
 
-  while(cmd != "Q")
+  while(1)
+  [xJelly, yJelly, thetaJelly] = moveJelly2(level, xJelly, yJelly, thetaJelly,
+  cmd = kbhit(1);
+   if(cmd = "Q")
+    break;
 
-  cmd = kbhit()
-
-   if(cmd == "w" || cmd =="a" || cmd == "d")
+   elseif(cmd == "w" || cmd =="a" || cmd == "d")
 
    %erase old captGraphics
    for(i = 1: length(captGraphics) )
@@ -45,7 +57,7 @@ function crabs ()
   [xCapt,yCapt,thetaCapt] = moveCapt(cmd, xCapt, yCapt, thetaCapt, mapWidth, mapHeight)
 
   %draw new captain
-    captGraphics = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt);
+    [captGraphics, xNet, yNet] = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt);
 
 elseif(cmd == "i" || cmd == "j" || cmd == "k" || cmd == "l" || cmd == ",")%respond crab move
     %erase old crab
@@ -58,7 +70,9 @@ elseif(cmd == "i" || cmd == "j" || cmd == "k" || cmd == "l" || cmd == ",")%respo
 
    crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab)
 
-   endif
+endif
+ fflush(stdout);
+ pause(0.1)
   endwhile
 
   close all

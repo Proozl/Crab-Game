@@ -2,7 +2,8 @@
 ## Author: Alan Parra <alanp@Alans-MacBook-Air.local>
 ## Created: 2023-09-08
 
-function captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
+function [captainGraphics, xNet, yNet] = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
+  %[graphicsHandle, xNet, yNet]
   % In the future, this function will draw the captain at the given
   % position (xCapt , yCapt) , with heading thetaCapt.
   % For now, it draws the captain at the (0, 0) with 0 heading.
@@ -37,12 +38,24 @@ function captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
   pt12=capt( : , 12);
   pt13=capt( : , 13);
   pt14=capt( : , 14);
+  pt15=capt( : , 15);
+  pt16=capt( : , 16);
+  pt17=capt( : , 17);
+  pt18=capt( : , 18);
+  pt19=capt( : , 19);
+  pt20=capt( : , 20);
+
+
+  %Set the net center
+  xNet = pt20(1);
+  yNet = pt20(2);
+
   % Draw the captain and set the return vector of graphics handles.
   captainGraphics(1) = drawLine(pt1 , pt2 , "k");
   captainGraphics(2) = drawLine(pt2 , pt3 , "k");
   captainGraphics(3) = drawLine(pt2 , pt5 , "k");
   captainGraphics(4) = drawLine(pt4 , pt5 , "k");
-  captainGraphics(5) = drawLine(pt5 , pt6 , "k");
+  captainGraphics(5) = drawLine(pt15 , pt6 , "k");
   captainGraphics(6) = drawLine(pt6 , pt1 , "k");
   captainGraphics(7) = drawLine(pt7 , pt8 , "k");
   captainGraphics(8) = drawLine(pt8 , pt9 , "k");
