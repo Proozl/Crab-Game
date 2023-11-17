@@ -32,14 +32,14 @@ captPt13 = [ 3*captSize; -2*captSize; 1];
 captPt14 = [  -captSize; -2*captSize; 1];
 
 %net
-captPt15 = [ 3*captSize; -4*captSize; 1];
-captPt16 = [ 5*captSize; -4*captSize; 1];
-captPt17 = [ 5*captSize; -2*captSize; 1];
-captPt18 = [ 4*captSize; 0; 1];
-captPt19 = [ 3*captSize; 0; 1];
+%captPt15 = [ 3*captSize; -4*captSize; 1];
+%captPt16 = [ 5*captSize; -4*captSize; 1];
+%captPt17 = [ 5*captSize; -2*captSize; 1];
+%captPt18 = [ 4*captSize; 0; 1];
+%captPt19 = [ 3*captSize; 0; 1];
 
 %net center
-captPt20 = [ 4*captSize; -2*captSize; 1];
+%captPt20 = [ 4*captSize; -2*captSize; 1];
 
 % extra credit
 % second spear
@@ -52,6 +52,5 @@ captPt20 = [ 4*captSize; -2*captSize; 1];
 
 capt = [captPt1 , captPt2, captPt3, captPt4, captPt5, captPt6, ...
         captPt7, captPt8, captPt9, captPt10, captPt11, captPt12, ...
-        captPt13, captPt14, captPt15, captPt16, captPt17, capt18, ...
-        capt19, capt20];
+        captPt13, captPt14];
 endfunction

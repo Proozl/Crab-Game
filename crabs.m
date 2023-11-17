@@ -1,15 +1,18 @@
-function crabs ()
+function crabs (level)
   %Author Alan Parra
   %Date: September 20, 2023
   % Crabs is a kids computer game where a fisherman, called the captain,
   % hunts for a very clever and powerful crab.
   % Draw the game map and initialize map dimensions.
   [mapHeight , mapWidth] = drawMap( "BGImage.png" );
+
   % Initialize captain location, heading and size
-  xCapt = 1000;
-  yCapt = 500;
-  thetaCapt = -pi/2;
-  sizeCapt = 50;
+    xCapt = 1000;
+    yCapt = 500;
+    thetaCapt = -pi/2;
+    sizeCapt = 50;
+    healthCapt = 100;
+    pointsCapt = 0; %will be modified
   % Draw the captain and initialize graphics handles
 
   %Initialize crab location, heading and size
@@ -17,65 +20,101 @@ function crabs ()
     yCrab = 1200;
     thetaCrab = -pi/2;
     sizeCrab = 50;
+    pointsCrab = 1;
 
   %Initialize jelly fish
     xJelly = rand*mapWidth;
     yJelly = 0;
     thetaJelly = -pi/2;
-    sizeJelly = 25;
+    sizeJelly = 75;
 
   %*********************************************************
   % Put your call to drawCapt() here ..... You must give drawCapt its
   % input and output arguments.
   %drawCapt(xCapt, yCapt, thetaCapt, sizeCapt)
   %*******************************************************
-  [captGraphics, xNet, yNet] = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt);
+  [captGraphics, xTip, yTip] = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt);
   crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab);
   jellyGraphics = drawJelly(xJelly, yJelly, thetaJelly, sizeJelly);
 
+ % print health status
+ %   healthLoc = [100,100];
+ %   pointsLoc = [100,175];
+ %   healthStatus = text(healthLoc(1), healthLoc(2), strcat('Health = ', num2tr(healthCapt)), 'FontSize', 23, 'Color', 'red');
+ %   pointStatus = text(pointsLoc(1), pointsLoc(2), strcat('Points = ', num2tr(healthCapt)), 'FontSize', 23, 'Color', 'red');
+
+  % ====================================
+
   %initial command
   cmd = "null";
-  for=1
-  delete(crabGraphics(i))
-  endfor
+  %for=1:length(crabGraphics)
+  %delete(crabGraphics(i))
+  %endfor
+
 
   while(1)
-  [xJelly, yJelly, thetaJelly] = moveJelly2(level, xJelly, yJelly, thetaJelly,
+
+      cmd = kbhit(1);
+      if(cmd == "Q") %|| healthCapt == 0);
+        break;
+      endif
+
+  %remove old and plot new health and poits status to scrren
+    %delete(healthStatus)
+    %delete(pointsStatus)
+
+
+% erase old jellyfish
+  for i=1:length(jellyGraphics)
+    delete(jellyGraphics(i));
+  endfor
+
+%move jellyfish
+  [xJelly, yJelly, thetaJelly] = moveJelly(level, xJelly, yJelly, thetaJelly, sizeJelly, mapHeight, mapWidth);
+
+% draw jellyfish
+  jellyGraphics = drawJelly(xJelly, yJelly, thetaJelly, sizeJelly);
+
   cmd = kbhit(1);
-   if(cmd = "Q")
-    break;
 
-   elseif(cmd == "w" || cmd =="a" || cmd == "d")
 
-   %erase old captGraphics
+
+   if (cmd == "w" || cmd =="a" || cmd == "d")
+
+%erase old captGraphics
    for(i = 1: length(captGraphics) )
       set(captGraphics(i), 'Visible', 'off');
+   endfor
 
- endfor
-  %move captain
+%move captain
+  [xCapt,yCapt,thetaCapt] = moveCapt(cmd, xCapt, yCapt, thetaCapt, mapWidth, mapHeight);
 
-  [xCapt,yCapt,thetaCapt] = moveCapt(cmd, xCapt, yCapt, thetaCapt, mapWidth, mapHeight)
+%draw new captain
+  [captGraphics, xTip, yTip] = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt);
+endif
 
-  %draw new captain
-    [captGraphics, xNet, yNet] = drawCapt(xCapt, yCapt,thetaCapt,sizeCapt);
 
-elseif(cmd == "i" || cmd == "j" || cmd == "k" || cmd == "l" || cmd == ",")%respond crab move
-    %erase old crab
+  if(cmd == "i" || cmd == "j" || cmd == "k" || cmd == "l" || cmd == ",")%respond crab move
+
+%erase old crab
     for i=1:length(crabGraphics)
       set(crabGraphics(i),'Visible','off');
-    endfor
+  endfor
 
-    %move crab
-    [xCrab, yCrab, thetaCrab] = moveCrab(cmd, xCrab, yCrab, thetaCrab, sizeCrab, mapHeight, mapWidth)
+%move crab
+  [xCrab, yCrab, thetaCrab] = moveCrab(cmd, xCrab, yCrab, thetaCrab, sizeCrab, mapHeight, mapWidth);
 
-   crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab)
+%draw crab
+  crabGraphics = drawCrab(xCrab, yCrab, thetaCrab, sizeCrab);
 
-endif
+  endif
+
  fflush(stdout);
- pause(0.1)
+ pause(0.01)
+
   endwhile
 
   close all
-  clear
+  %clear
 
 endfunction

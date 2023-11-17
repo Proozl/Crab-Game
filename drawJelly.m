@@ -1,6 +1,6 @@
 function jellyGraphics = drawJelly (xJelly, yJelly, thetaJelly, jellySize)
 
-jel = getJelly(jellySize)
+  jel = getJelly(jellySize);
 
   R = getRotation(thetaJelly);
   jellyRotated = R*jel;
@@ -8,7 +8,7 @@ jel = getJelly(jellySize)
   T = getTranslation(xJelly, yJelly);
   jel = T*jellyRotated;
 
- pt1=jel( : , 1);
+  pt1=jel( : , 1);
   pt2=jel( : , 2);
   pt3=jel( : , 3);
   pt4=jel( : , 4);
@@ -23,6 +23,7 @@ jel = getJelly(jellySize)
   pt13=jel( : , 13);
   pt14=jel( : , 14);
   pt15=jel( : , 15);
+  pt16=jel( : , 16);
 
   % Draw the jelly and set the return vector of graphics handles.
   jellyGraphics(1) = drawLine(pt1 , pt2 , "m");
@@ -38,6 +39,6 @@ jel = getJelly(jellySize)
   jellyGraphics(10) = drawLine(pt5 , pt12 , "m");
   jellyGraphics(11) = drawLine(pt13 , pt14 , "m");
   jellyGraphics(12) = drawLine(pt4 , pt15 , "m");
-  jellyGraphics(13) = drawLine(pt5, pt8, "m");
+  jellyGraphics(13) = drawLine(pt5, pt16, "m");
 
 endfunction
